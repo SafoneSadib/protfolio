@@ -1,0 +1,2052 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Safone Sadib (23-55180-3) | CSE @ AIUB — Animated E-Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Space Grotesk', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            obsidian: '#030307',
+            surface: '#0a0b13',
+            cyanGlow: '#00f5d4',
+            violetGlow: '#a855f7',
+            magentaGlow: '#ff2a85',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root {
+      --bg-dark: #030307;
+      --cyan: #00f5d4;
+      --violet: #a855f7;
+      --magenta: #ff2a85;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      background-color: var(--bg-dark);
+      color: #e2e8f0;
+      overflow-x: hidden;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    @media (pointer: fine) {
+      body, a, button, input, textarea, select, label {
+        cursor: none !important;
+      }
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #030307; }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #00f5d4, #a855f7, #ff2a85);
+      border-radius: 999px;
+    }
+
+    /* BLACK SCREEN PRELOADER */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: #000000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: opacity 0.7s ease, visibility 0.7s;
+    }
+
+    #preloader.hidden-loader {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .curtain-top, .curtain-bottom {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background: #000000;
+      z-index: 1;
+      transition: transform 0.9s cubic-bezier(0.86, 0, 0.07, 1);
+    }
+    .curtain-top { top: 0; border-bottom: 1px solid rgba(0, 245, 212, 0.25); }
+    .curtain-bottom { bottom: 0; border-top: 1px solid rgba(168, 85, 247, 0.25); }
+
+    #preloader.split .curtain-top { transform: translateY(-100%); }
+    #preloader.split .curtain-bottom { transform: translateY(100%); }
+    #preloader.split .loader-content {
+      opacity: 0;
+      transform: scale(1.12);
+      transition: all 0.45s ease;
+    }
+
+    .loader-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .core-wrapper {
+      position: relative;
+      width: 170px;
+      height: 170px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .core-ring-1 {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 2.5px solid transparent;
+      border-top-color: #00f5d4;
+      border-bottom-color: #a855f7;
+      animation: spinClockwise 2s linear infinite;
+      box-shadow: 0 0 30px rgba(0, 245, 212, 0.3);
+    }
+
+    .core-ring-2 {
+      position: absolute;
+      inset: 14px;
+      border-radius: 50%;
+      border: 2px dashed rgba(255, 42, 133, 0.7);
+      animation: spinCounter 3.2s linear infinite;
+    }
+
+    .glitch-text {
+      position: relative;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .glitch-text::before,
+    .glitch-text::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+    }
+    .glitch-text::before {
+      left: 2px;
+      text-shadow: -2px 0 #00f5d4;
+      clip-path: inset(20% 0 40% 0);
+      animation: glitchAnim1 1.8s infinite linear alternate-reverse;
+    }
+    .glitch-text::after {
+      left: -2px;
+      text-shadow: -2px 0 #ff2a85;
+      clip-path: inset(60% 0 10% 0);
+      animation: glitchAnim2 1.6s infinite linear alternate-reverse;
+    }
+
+    @keyframes spinClockwise { to { transform: rotate(360deg); } }
+    @keyframes spinCounter { to { transform: rotate(-360deg); } }
+    @keyframes glitchAnim1 {
+      0% { clip-path: inset(10% 0 70% 0); }
+      50% { clip-path: inset(45% 0 20% 0); }
+      100% { clip-path: inset(75% 0 5% 0); }
+    }
+    @keyframes glitchAnim2 {
+      0% { clip-path: inset(65% 0 10% 0); }
+      50% { clip-path: inset(15% 0 55% 0); }
+      100% { clip-path: inset(35% 0 35% 0); }
+    }
+
+    /* CUSTOM MAGNETIC CURSOR */
+    .cursor-dot, .cursor-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 9998;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.25s ease, height 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+    }
+    .cursor-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #00f5d4;
+      box-shadow: 0 0 14px #00f5d4;
+    }
+    .cursor-ring {
+      width: 38px;
+      height: 38px;
+      border: 1.5px solid rgba(0, 245, 212, 0.7);
+      box-shadow: 0 0 22px rgba(168, 85, 247, 0.3);
+    }
+    .cursor-ring.active {
+      width: 66px;
+      height: 66px;
+      border-color: #ff2a85;
+      background-color: rgba(0, 245, 212, 0.08);
+      backdrop-filter: blur(2px);
+    }
+    @media (pointer: coarse) {
+      .cursor-dot, .cursor-ring { display: none; }
+    }
+
+    /* PARTICLE CANVAS & AMBIENT */
+    #particle-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .aurora-blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(115px);
+      opacity: 0.2;
+      z-index: 0;
+      pointer-events: none;
+      animation: floatBlob 14s ease-in-out infinite alternate;
+    }
+    @keyframes floatBlob {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(45px, -45px) scale(1.12); }
+      100% { transform: translate(-30px, 30px) scale(0.95); }
+    }
+
+    .cyber-grid {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* KINETIC TYPOGRAPHY */
+    .char-reveal {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(35px) rotateX(-65deg);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .char-reveal.visible {
+      opacity: 1;
+      transform: translateY(0) rotateX(0deg);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #00f5d4 0%, #a855f7 52%, #ff2a85 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% 200%;
+      animation: gradientShift 4.5s ease infinite;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* GLASS CARDS & NEON SWEEP */
+    .glass-card {
+      background: rgba(11, 12, 22, 0.72);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 1.25rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .glass-card:hover {
+      border-color: rgba(0, 245, 212, 0.45);
+      box-shadow: 0 20px 50px -15px rgba(0, 245, 212, 0.2), 0 0 30px -10px rgba(168, 85, 247, 0.28);
+    }
+
+    .neon-sweep::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background: conic-gradient(from var(--angle, 0deg), transparent 65%, #00f5d4, #a855f7, #ff2a85, transparent);
+      z-index: -1;
+      border-radius: inherit;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      animation: rotateBorder 3.2s linear infinite;
+    }
+    .neon-sweep:hover::before { opacity: 1; }
+    @property --angle {
+      syntax: '<angle>';
+      initial-value: 0deg;
+      inherits: false;
+    }
+    @keyframes rotateBorder { to { --angle: 360deg; } }
+
+    .tilt-card {
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .tilt-glare {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.16), transparent 65%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: inherit;
+    }
+
+    .reveal-up {
+      opacity: 0;
+      transform: translateY(38px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-up.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* CARTOON MASCOT & ORBIT ANIMATIONS */
+    @keyframes mascotFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(1.2deg); }
+    }
+    @keyframes mascotBlink {
+      0%, 46%, 50%, 96%, 100% { transform: scaleY(1); }
+      48%, 98% { transform: scaleY(0.08); }
+    }
+    @keyframes mascotWave {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-18deg); }
+      50% { transform: rotate(12deg); }
+      75% { transform: rotate(-14deg); }
+    }
+    @keyframes badgeOrbit1 {
+      0%, 100% { transform: translate(0, 0) rotate(-4deg); }
+      50% { transform: translate(6px, -12px) rotate(5deg); }
+    }
+    @keyframes badgeOrbit2 {
+      0%, 100% { transform: translate(0, 0) rotate(4deg); }
+      50% { transform: translate(-8px, -10px) rotate(-5deg); }
+    }
+    @keyframes hexSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    .mascot-body-anim { animation: mascotFloat 4s ease-in-out infinite; transform-origin: center; }
+    .mascot-eye { animation: mascotBlink 4.2s infinite; transform-origin: center; }
+    .mascot-wave-arm { transform-origin: 182px 135px; transition: transform 0.3s ease; }
+    .mascot-stage:hover .mascot-wave-arm,
+    .mascot-waving .mascot-wave-arm {
+      animation: mascotWave 0.9s ease-in-out infinite;
+    }
+
+    .orbit-badge-1 { animation: badgeOrbit1 3.8s ease-in-out infinite; }
+    .orbit-badge-2 { animation: badgeOrbit2 4.4s ease-in-out infinite; }
+
+    .hex-frame {
+      clip-path: polygon(50% 2%, 95% 25%, 95% 75%, 50% 98%, 5% 75%, 5% 25%);
+    }
+
+    .btn-cyber {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .btn-cyber::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+      transform: skewX(-25deg);
+      transition: left 0.6s ease;
+    }
+    .btn-cyber:hover::after { left: 140%; }
+  </style>
+</head>
+<body class="antialiased selection:bg-cyanGlow selection:text-obsidian">
+
+  <!-- BLACK SCREEN PRELOADER -->
+  <div id="preloader" aria-label="Loading Portfolio">
+    <div class="curtain-top"></div>
+    <div class="curtain-bottom"></div>
+
+    <div class="loader-content">
+      <div class="core-wrapper">
+        <div class="core-ring-1"></div>
+        <div class="core-ring-2"></div>
+        <!-- Animated Cartoon Cyber Developer Crest -->
+        <svg class="w-28 h-28 mascot-body-anim" viewBox="0 0 120 120" fill="none">
+          <circle cx="60" cy="60" r="46" fill="#090b14" stroke="#00f5d4" stroke-width="2" />
+          <!-- Headphones -->
+          <path d="M26 58 C26 36, 94 36, 94 58" stroke="#a855f7" stroke-width="6" stroke-linecap="round" />
+          <rect x="19" y="48" width="10" height="22" rx="5" fill="#ff2a85" />
+          <rect x="91" y="48" width="10" height="22" rx="5" fill="#ff2a85" />
+          <!-- Cartoon Head & Hair -->
+          <circle cx="60" cy="62" r="24" fill="#ffd6b0" />
+          <path d="M36 56 C38 35, 82 35, 84 56 C78 46, 68 44, 60 48 C52 44, 42 46, 36 56 Z" fill="#181828" />
+          <!-- Visor Glasses -->
+          <rect x="42" y="54" width="15" height="10" rx="3" fill="#050508" stroke="#00f5d4" stroke-width="1.8" />
+          <rect x="63" y="54" width="15" height="10" rx="3" fill="#050508" stroke="#00f5d4" stroke-width="1.8" />
+          <line x1="57" y1="58" x2="63" y2="58" stroke="#00f5d4" stroke-width="1.8" />
+          <circle class="mascot-eye" cx="49.5" cy="59" r="2.2" fill="#00f5d4" />
+          <circle class="mascot-eye" cx="70.5" cy="59" r="2.2" fill="#00f5d4" />
+          <!-- Smile -->
+          <path d="M53 72 Q60 78 67 72" stroke="#181828" stroke-width="2.4" stroke-linecap="round" fill="none" />
+        </svg>
+      </div>
+
+      <div id="loader-percent" class="font-display font-extrabold text-3xl text-cyanGlow mb-2">0%</div>
+
+      <div class="glitch-text text-xs sm:text-sm font-bold mb-2" data-text="INITIALIZING SAFONE.DEV // 23-55180-3">
+        INITIALIZING SAFONE.DEV // 23-55180-3
+      </div>
+      <p id="loader-status" class="font-mono text-xs text-violetGlow tracking-widest">
+        LOADING CARTOON CORE, ESP32 SENSORS &amp; SHADERS...
+      </p>
+
+      <div class="w-64 sm:w-80 h-1.5 bg-white/10 rounded-full overflow-hidden mt-5 border border-white/10">
+        <div id="loader-bar" class="h-full w-0 bg-gradient-to-r from-cyanGlow via-violetGlow to-magentaGlow transition-all duration-100"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CUSTOM MAGNETIC CURSOR -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast-box" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[9990] hidden items-center gap-2.5 px-5 py-3 rounded-2xl bg-obsidian/95 border border-cyanGlow/60 text-cyanGlow font-mono text-xs sm:text-sm shadow-[0_0_30px_rgba(0,245,212,0.35)] backdrop-blur-xl">
+    <span class="w-2.5 h-2.5 rounded-full bg-cyanGlow animate-ping"></span>
+    <span id="toast-text">Copied to clipboard!</span>
+  </div>
+
+  <!-- SCROLL PROGRESS BAR -->
+  <div class="fixed top-0 left-0 right-0 h-[3px] z-50 bg-transparent">
+    <div id="scroll-progress" class="h-full w-0 bg-gradient-to-r from-cyanGlow via-violetGlow to-magentaGlow shadow-[0_0_14px_#00f5d4]"></div>
+  </div>
+
+  <!-- PARTICLE CANVAS & AMBIENT -->
+  <canvas id="particle-canvas"></canvas>
+  <div class="cyber-grid"></div>
+  <div class="aurora-blob w-96 h-96 bg-cyanGlow top-[-5%] left-[-5%]"></div>
+  <div class="aurora-blob w-[28rem] h-[28rem] bg-violetGlow bottom-[10%] right-[-8%]" style="animation-delay: -5s;"></div>
+  <div class="aurora-blob w-80 h-80 bg-magentaGlow top-[45%] left-[35%]" style="animation-delay: -9s;"></div>
+
+  <!-- FLOATING GLASSMORPHIC NAVBAR -->
+  <header class="fixed top-4 left-0 right-0 z-40 px-4">
+    <nav class="max-w-6xl mx-auto glass-card px-5 py-3 flex items-center justify-between rounded-2xl border border-white/10 shadow-2xl">
+      <a href="#hero" class="magnetic flex items-center gap-2.5 group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-cyanGlow via-violetGlow to-magentaGlow p-[1.5px]">
+          <div class="w-full h-full bg-obsidian rounded-[10px] flex items-center justify-center font-display font-extrabold text-sm text-white group-hover:text-cyanGlow transition-colors">
+            SS
+          </div>
+        </div>
+        <span class="font-display font-bold text-base sm:text-lg tracking-tight text-white">
+          Safone<span class="text-cyanGlow">.dev</span>
+        </span>
+      </a>
+
+      <ul class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
+        <li><a href="#about" class="magnetic hover:text-cyanGlow transition-colors py-1">About</a></li>
+        <li><a href="#skills" class="magnetic hover:text-cyanGlow transition-colors py-1">Tech Stack</a></li>
+        <li><a href="#projects" class="magnetic hover:text-cyanGlow transition-colors py-1">Projects</a></li>
+        <li><a href="#journey" class="magnetic hover:text-cyanGlow transition-colors py-1">Journey</a></li>
+        <li><a href="#contact" class="magnetic hover:text-cyanGlow transition-colors py-1">Contact &amp; Socials</a></li>
+      </ul>
+
+      <div class="flex items-center gap-2.5">
+        <button type="button" id="open-customizer-nav" class="magnetic btn-cyber px-3.5 py-2 rounded-xl text-xs font-mono font-bold uppercase tracking-wider bg-white/5 hover:bg-cyanGlow hover:text-obsidian text-cyanGlow border border-cyanGlow/40 flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931z"/></svg>
+          <span class="hidden sm:inline">Edit Photo &amp; IDs</span>
+          <span class="sm:hidden">Edit</span>
+        </button>
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-xl bg-white/5 border border-white/10 text-slate-200 hover:text-cyanGlow" aria-label="Toggle Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <div id="mobile-menu" class="hidden md:hidden max-w-6xl mx-auto mt-2 glass-card p-5 rounded-2xl border border-white/10">
+      <ul class="flex flex-col gap-4 text-center font-medium text-slate-200">
+        <li><a href="#about" class="mobile-nav-link block py-1.5 hover:text-cyanGlow">About</a></li>
+        <li><a href="#skills" class="mobile-nav-link block py-1.5 hover:text-cyanGlow">Tech Stack</a></li>
+        <li><a href="#projects" class="mobile-nav-link block py-1.5 hover:text-cyanGlow">Projects</a></li>
+        <li><a href="#journey" class="mobile-nav-link block py-1.5 hover:text-cyanGlow">Journey</a></li>
+        <li><a href="#contact" class="mobile-nav-link block py-1.5 text-cyanGlow font-bold">Contact &amp; Socials</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="relative z-10">
+
+    <!-- HERO SECTION WITH PROFILE PHOTO FRAME + ANIMATED CARTOON DEVELOPER -->
+    <section id="hero" class="min-h-screen flex items-center pt-28 pb-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+        <!-- Left Kinetic Intro & Quick Social Dock -->
+        <div class="lg:col-span-6 space-y-6">
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/5 border border-cyanGlow/30 text-xs font-mono text-cyanGlow">
+            <span class="w-2 h-2 rounded-full bg-cyanGlow animate-ping"></span>
+            <span>CSE @ AIUB • DHAKA, BANGLADESH</span>
+          </div>
+
+          <h1 id="hero-title" class="font-display font-extrabold text-4xl sm:text-6xl leading-[1.08] tracking-tight text-white">
+            Hi, I'm <br />
+            <span class="gradient-text" id="kinetic-name">Safone Sadib</span>
+          </h1>
+
+          <div class="flex items-center gap-2 font-mono text-base sm:text-lg text-slate-300 h-8">
+            <span class="text-magentaGlow font-bold">&gt;_</span>
+            <span id="typed-role" class="text-white font-semibold"></span>
+            <span class="w-2.5 h-5 bg-cyanGlow animate-pulse inline-block"></span>
+          </div>
+
+          <p class="text-slate-400 text-base sm:text-lg max-w-xl leading-relaxed">
+            CSE undergraduate (<span class="font-mono text-xs sm:text-sm text-cyanGlow bg-white/5 px-2 py-0.5 rounded border border-cyanGlow/20">ID: 23-55180-3</span>) at <span class="text-white font-medium">American International University-Bangladesh (AIUB)</span> — building <span class="text-cyanGlow">Games</span>, <span class="text-violetGlow">Embedded &amp; IoT Systems</span>, and <span class="text-magentaGlow">Web &amp; Android Apps</span>.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap items-center gap-3.5 pt-1">
+            <a href="#projects" class="magnetic btn-cyber px-6 py-3.5 rounded-2xl bg-gradient-to-r from-cyanGlow via-violetGlow to-magentaGlow text-obsidian font-bold text-sm sm:text-base shadow-[0_0_30px_rgba(0,245,212,0.35)] hover:scale-105 flex items-center gap-2">
+              <span>Explore Projects</span>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+
+            <label for="quick-photo-upload" class="magnetic glass-card px-5 py-3.5 rounded-2xl text-white font-semibold text-sm sm:text-base hover:border-cyanGlow/60 flex items-center gap-2 transition-all">
+              <svg class="w-5 h-5 text-cyanGlow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
+              <span>Upload Photo</span>
+              <input id="quick-photo-upload" type="file" accept="image/*" class="hidden" />
+            </label>
+          </div>
+
+          <!-- Hero Quick Social & Mobile Dock -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-3">
+            <!-- Mobile Pill -->
+            <button type="button" data-copy-target="phone" class="magnetic glass-card p-3 rounded-xl text-left hover:border-emerald-400/60 group">
+              <div class="flex items-center justify-between text-emerald-400 mb-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+                <span class="font-mono text-[9px] uppercase text-slate-400 group-hover:text-emerald-400">Copy</span>
+              </div>
+              <div id="hero-phone-text" class="font-mono text-[11px] text-white truncate">+880 1XXX-XXXXXX</div>
+            </button>
+
+            <!-- Facebook Pill -->
+            <a id="hero-fb-link" href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="magnetic glass-card p-3 rounded-xl text-left hover:border-blue-400/60 group">
+              <div class="flex items-center justify-between text-blue-400 mb-1">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                <span class="font-mono text-[9px] uppercase text-slate-400 group-hover:text-blue-400">FB</span>
+              </div>
+              <div id="hero-fb-text" class="font-mono text-[11px] text-white truncate">fb.com/safonesadib</div>
+            </a>
+
+            <!-- Instagram Pill -->
+            <a id="hero-ig-link" href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="magnetic glass-card p-3 rounded-xl text-left hover:border-magentaGlow/60 group">
+              <div class="flex items-center justify-between text-magentaGlow mb-1">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                <span class="font-mono text-[9px] uppercase text-slate-400 group-hover:text-magentaGlow">IG</span>
+              </div>
+              <div id="hero-ig-text" class="font-mono text-[11px] text-white truncate">@safonesadib</div>
+            </a>
+
+            <!-- GitHub Pill -->
+            <a href="https://github.com/SafoneSadib" target="_blank" rel="noopener noreferrer" class="magnetic glass-card p-3 rounded-xl text-left hover:border-cyanGlow/60 group">
+              <div class="flex items-center justify-between text-cyanGlow mb-1">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                <span class="font-mono text-[9px] uppercase text-slate-400 group-hover:text-cyanGlow">GIT</span>
+              </div>
+              <div class="font-mono text-[11px] text-white truncate">@SafoneSadib</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Interactive Profile Photo Frame + Animated Cartoon Developer Mascot -->
+        <div class="lg:col-span-6 flex justify-center">
+          <div class="tilt-card mascot-stage relative w-full max-w-lg glass-card p-6 sm:p-7 rounded-3xl border border-cyanGlow/30 shadow-[0_0_70px_rgba(168,85,247,0.25)]">
+            <div class="tilt-glare"></div>
+
+            <!-- Floating Orbiting Cartoon Badges -->
+            <div class="orbit-badge-1 hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-obsidian/90 border border-cyanGlow/50 text-cyanGlow font-mono text-xs shadow-lg absolute -top-3 left-6 z-20">
+              <span>🎮</span><span>OpenGL &amp; Games</span>
+            </div>
+            <div class="orbit-badge-2 hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-obsidian/90 border border-magentaGlow/50 text-magentaGlow font-mono text-xs shadow-lg absolute -top-3 right-6 z-20">
+              <span>⚡</span><span>ESP32 &amp; IoT</span>
+            </div>
+
+            <!-- Top Bar -->
+            <div class="flex items-center justify-between pb-3 mb-4 border-b border-white/10">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+              </div>
+              <span class="font-mono text-xs text-cyanGlow">ID: 23-55180-3 • AIUB</span>
+            </div>
+
+            <!-- Dual Showcase: Hexagonal Profile Photo Frame + Animated Cartoon Developer -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 items-center my-2">
+
+              <!-- 1. Hexagonal Glowing Profile Photo Frame -->
+              <div class="flex flex-col items-center">
+                <div class="relative w-44 h-44 flex items-center justify-center group">
+                  <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-cyanGlow via-violetGlow to-magentaGlow opacity-65 blur-md group-hover:opacity-95 transition"></div>
+                  <div class="relative w-40 h-40 p-[3px] bg-gradient-to-tr from-cyanGlow via-violetGlow to-magentaGlow hex-frame">
+                    <div class="w-full h-full bg-obsidian hex-frame overflow-hidden flex items-center justify-center relative">
+                      <img id="profile-photo-img" alt="Safone Sadib Profile Photo" class="hidden w-full h-full object-cover" />
+                      <!-- Default Illustrated Cyber Portrait when no photo uploaded yet -->
+                      <svg id="default-avatar-svg" class="w-full h-full" viewBox="0 0 160 160" fill="none">
+                        <rect width="160" height="160" fill="#090c18"/>
+                        <circle cx="80" cy="80" r="68" stroke="#00f5d4" stroke-opacity="0.25" stroke-dasharray="6 4"/>
+                        <path d="M40 150 C40 120, 120 120, 120 150" fill="#a855f7"/>
+                        <circle cx="80" cy="76" r="32" fill="#ffd6b0"/>
+                        <path d="M48 68 C50 40, 110 40, 112 68 C102 54, 90 52, 80 57 C70 52, 58 54, 48 68 Z" fill="#141424"/>
+                        <rect x="57" y="66" width="19" height="12" rx="4" fill="#050508" stroke="#00f5d4" stroke-width="2"/>
+                        <rect x="84" y="66" width="19" height="12" rx="4" fill="#050508" stroke="#00f5d4" stroke-width="2"/>
+                        <line x1="76" y1="71" x2="84" y2="71" stroke="#00f5d4" stroke-width="2"/>
+                        <circle cx="66.5" cy="72" r="2.5" fill="#00f5d4"/>
+                        <circle cx="93.5" cy="72" r="2.5" fill="#00f5d4"/>
+                        <path d="M71 91 Q80 99 89 91" stroke="#141424" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <label for="frame-photo-upload" class="magnetic mt-2.5 px-3 py-1 rounded-full bg-white/5 hover:bg-cyanGlow hover:text-obsidian border border-cyanGlow/40 font-mono text-[11px] text-cyanGlow transition">
+                  Change Profile Photo
+                  <input id="frame-photo-upload" type="file" accept="image/*" class="hidden" />
+                </label>
+              </div>
+
+              <!-- 2. Full Animated Cartoon Developer Mascot Coding & Waving -->
+              <div class="flex flex-col items-center">
+                <svg id="hero-cartoon-svg" class="w-48 h-48 mascot-body-anim overflow-visible" viewBox="0 0 220 220" fill="none">
+                  <!-- Glow Aura -->
+                  <circle cx="110" cy="110" r="88" fill="url(#cartoonAura)" />
+                  <!-- Floating Code & Lightning Stickers -->
+                  <text x="20" y="45" fill="#00f5d4" font-family="JetBrains Mono" font-size="13" font-weight="bold">&lt;/&gt;</text>
+                  <text x="176" y="42" fill="#ff2a85" font-family="JetBrains Mono" font-size="14" font-weight="bold">⚡</text>
+                  <text x="180" y="102" fill="#a855f7" font-family="JetBrains Mono" font-size="12" font-weight="bold">{ }</text>
+
+                  <!-- Headphones Band -->
+                  <path d="M58 84 C58 42, 162 42, 162 84" stroke="#a855f7" stroke-width="9" stroke-linecap="round" />
+                  <rect x="47" y="70" width="14" height="32" rx="7" fill="#ff2a85" stroke="#fff" stroke-width="1.5" />
+                  <rect x="159" y="70" width="14" height="32" rx="7" fill="#ff2a85" stroke="#fff" stroke-width="1.5" />
+
+                  <!-- Torso / Hoodie -->
+                  <path d="M62 175 C62 136, 158 136, 158 175 Z" fill="#15182b" stroke="#00f5d4" stroke-width="2" />
+                  <path d="M96 142 L110 162 L124 142" stroke="#a855f7" stroke-width="2.5" fill="none" />
+
+                  <!-- Waving Right Arm -->
+                  <g class="mascot-wave-arm">
+                    <path d="M152 146 Q182 126 190 98" stroke="#15182b" stroke-width="16" stroke-linecap="round" />
+                    <path d="M152 146 Q182 126 190 98" stroke="#00f5d4" stroke-width="2" stroke-linecap="round" />
+                    <circle cx="191" cy="94" r="9" fill="#ffd6b0" />
+                  </g>
+
+                  <!-- Cartoon Head -->
+                  <circle cx="110" cy="92" r="36" fill="#ffd6b0" />
+                  <!-- Stylized Hair -->
+                  <path d="M74 84 C76 50, 144 50, 146 84 C136 68, 122 65, 110 72 C98 65, 84 68, 74 84 Z" fill="#161626" />
+
+                  <!-- Cyber Glasses -->
+                  <rect x="83" y="81" width="23" height="15" rx="4" fill="#050508" stroke="#00f5d4" stroke-width="2.2" />
+                  <rect x="114" y="81" width="23" height="15" rx="4" fill="#050508" stroke="#00f5d4" stroke-width="2.2" />
+                  <line x1="106" y1="88" x2="114" y2="88" stroke="#00f5d4" stroke-width="2.2" />
+
+                  <!-- Mouse-Tracking Pupils -->
+                  <g id="cartoon-pupils">
+                    <circle class="mascot-eye" cx="94.5" cy="88.5" r="3.2" fill="#00f5d4" />
+                    <circle class="mascot-eye" cx="125.5" cy="88.5" r="3.2" fill="#00f5d4" />
+                  </g>
+
+                  <!-- Happy Smile -->
+                  <path d="M99 108 Q110 118 121 108" stroke="#161626" stroke-width="3" stroke-linecap="round" fill="none" />
+
+                  <!-- Holographic Laptop -->
+                  <polygon points="62,175 158,175 148,144 72,144" fill="#0c1020" stroke="#a855f7" stroke-width="2" />
+                  <circle cx="110" cy="160" r="6" fill="#00f5d4" />
+                  <rect x="52" y="175" width="116" height="7" rx="3.5" fill="#00f5d4" />
+
+                  <defs>
+                    <radialGradient id="cartoonAura" cx="0.5" cy="0.5" r="0.5">
+                      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.32" />
+                      <stop offset="100%" stop-color="#00f5d4" stop-opacity="0" />
+                    </radialGradient>
+                  </defs>
+                </svg>
+                <span class="font-mono text-[11px] text-slate-400">Hover mascot to wave 👋</span>
+              </div>
+            </div>
+
+            <!-- Live Code Footer inside Hero Card -->
+            <div class="mt-3 bg-black/55 rounded-2xl p-3.5 font-mono text-xs leading-relaxed border border-white/5 flex items-center justify-between">
+              <div>
+                <span class="text-violetGlow">const</span> <span class="text-cyanGlow">dev</span> = <span class="text-emerald-400">"Safone Sadib"</span>;
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 text-[10px]">ONLINE</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ABOUT & ANIMATED STATS SECTION -->
+    <section id="about" class="py-24 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="reveal-up flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
+          <div>
+            <span class="font-mono text-xs uppercase tracking-[0.25em] text-cyanGlow">01 // SYSTEM IDENTITY</span>
+            <h2 class="font-display font-bold text-3xl sm:text-5xl text-white mt-2">Engineering Beyond <span class="gradient-text">Boundaries</span></h2>
+          </div>
+          <p class="text-slate-400 max-w-md text-sm sm:text-base">
+            From microcontroller registers and sensors to OpenGL graphics, Android APKs, and research surveys.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          <div class="reveal-up lg:col-span-7 glass-card p-7 sm:p-9 flex flex-col justify-between space-y-6">
+            <div class="space-y-4 text-slate-300 leading-relaxed text-base sm:text-lg">
+              <p>
+                I'm <strong class="text-white">Safone Sadib</strong> (<span class="font-mono text-sm text-cyanGlow">ID: 23-55180-3</span>), a Computer Science and Engineering undergraduate at <span class="text-cyanGlow font-medium">American International University-Bangladesh (AIUB)</span> in Dhaka, Bangladesh.
+              </p>
+              <p>
+                I love crafting interactive software and hardware systems—whether programming <span class="text-violetGlow font-medium">ESP32 &amp; Arduino UNO</span> automation with live telemetry, designing 2D/3D game mechanics in <span class="text-cyanGlow font-medium">C++ / OpenGL / Luau / Blender</span>, engineering <span class="text-emerald-400 font-medium">Web, AJAX/JSON &amp; Android APK</span> apps, or researching human-computer health impacts.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+              <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                <div class="text-xs font-mono text-cyanGlow">STUDENT ID</div>
+                <div class="text-sm font-semibold text-white mt-0.5">23-55180-3</div>
+              </div>
+              <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                <div class="text-xs font-mono text-violetGlow">UNIVERSITY</div>
+                <div class="text-sm font-semibold text-white mt-0.5">AIUB, Dhaka</div>
+              </div>
+              <div class="p-3.5 rounded-xl bg-white/5 border border-white/10 col-span-2 sm:col-span-1">
+                <div class="text-xs font-mono text-emerald-400">FOCUS AREAS</div>
+                <div class="text-sm font-semibold text-white mt-0.5">Games • IoT • Web/App</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal-up lg:col-span-5 grid grid-cols-2 gap-4">
+            <div class="tilt-card glass-card p-6 flex flex-col justify-center items-center text-center">
+              <div class="tilt-glare"></div>
+              <span class="font-display font-extrabold text-4xl sm:text-5xl text-cyanGlow counter" data-target="8">0</span>
+              <span class="font-mono text-xs text-slate-400 uppercase tracking-wider mt-2">Featured Builds</span>
+            </div>
+
+            <div class="tilt-card glass-card p-6 flex flex-col justify-center items-center text-center">
+              <div class="tilt-glare"></div>
+              <span class="font-display font-extrabold text-4xl sm:text-5xl text-violetGlow counter" data-target="4">0</span>
+              <span class="font-mono text-xs text-slate-400 uppercase tracking-wider mt-2">MCU Architectures</span>
+            </div>
+
+            <div class="tilt-card glass-card p-6 flex flex-col justify-center items-center text-center">
+              <div class="tilt-glare"></div>
+              <span class="font-display font-extrabold text-4xl sm:text-5xl text-emerald-400 counter" data-target="3">0</span>
+              <span class="font-mono text-xs text-slate-400 uppercase tracking-wider mt-2">IoT &amp; UNO Systems</span>
+            </div>
+
+            <div class="tilt-card glass-card p-6 flex flex-col justify-center items-center text-center">
+              <div class="tilt-glare"></div>
+              <span class="font-display font-extrabold text-4xl sm:text-5xl text-magentaGlow counter" data-target="18">0</span>
+              <span class="font-mono text-xs text-slate-400 uppercase tracking-wider mt-2">Core Tech Skills</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECH STACK / SKILLS MATRIX -->
+    <section id="skills" class="py-24 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="reveal-up text-center max-w-2xl mx-auto mb-12">
+          <span class="font-mono text-xs uppercase tracking-[0.25em] text-violetGlow">02 // ARSENAL &amp; MODULES</span>
+          <h2 class="font-display font-bold text-3xl sm:text-5xl text-white mt-2">Technical <span class="gradient-text">Skillset</span></h2>
+          <p class="text-slate-400 text-sm sm:text-base mt-3">Filter by domain across Game Dev, Embedded &amp; Microcontrollers, and Full-Stack Web &amp; Scientific Computing.</p>
+        </div>
+
+        <div class="reveal-up flex flex-wrap justify-center gap-3 mb-12" role="tablist">
+          <button class="skill-tab magnetic active px-5 py-2.5 rounded-xl font-mono text-xs sm:text-sm font-bold uppercase tracking-wider bg-cyanGlow text-obsidian shadow-[0_0_20px_rgba(0,245,212,0.35)] transition-all" data-category="all">
+            All Skills
+          </button>
+          <button class="skill-tab magnetic px-5 py-2.5 rounded-xl font-mono text-xs sm:text-sm font-bold uppercase tracking-wider glass-card text-slate-300 hover:text-white transition-all" data-category="gamedev">
+            Game Dev &amp; 3D
+          </button>
+          <button class="skill-tab magnetic px-5 py-2.5 rounded-xl font-mono text-xs sm:text-sm font-bold uppercase tracking-wider glass-card text-slate-300 hover:text-white transition-all" data-category="iot">
+            Embedded, IoT &amp; MCUs
+          </button>
+          <button class="skill-tab magnetic px-5 py-2.5 rounded-xl font-mono text-xs sm:text-sm font-bold uppercase tracking-wider glass-card text-slate-300 hover:text-white transition-all" data-category="web">
+            Web, DB &amp; Computing
+          </button>
+        </div>
+
+        <div id="skills-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS SHOWCASE -->
+    <section id="projects" class="py-24 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="reveal-up flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+          <div>
+            <span class="font-mono text-xs uppercase tracking-[0.25em] text-cyanGlow">03 // DEPLOYED ARTIFACTS</span>
+            <h2 class="font-display font-bold text-3xl sm:text-5xl text-white mt-2">Featured <span class="gradient-text">Projects</span></h2>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            <button class="proj-filter magnetic active px-4 py-2 rounded-xl font-mono text-xs font-bold bg-violetGlow text-white" data-filter="all">All (8)</button>
+            <button class="proj-filter magnetic px-4 py-2 rounded-xl font-mono text-xs font-bold glass-card text-slate-300" data-filter="iot">Embedded &amp; IoT (3)</button>
+            <button class="proj-filter magnetic px-4 py-2 rounded-xl font-mono text-xs font-bold glass-card text-slate-300" data-filter="game">Game Dev (2)</button>
+            <button class="proj-filter magnetic px-4 py-2 rounded-xl font-mono text-xs font-bold glass-card text-slate-300" data-filter="web">Web &amp; App (2)</button>
+            <button class="proj-filter magnetic px-4 py-2 rounded-xl font-mono text-xs font-bold glass-card text-slate-300" data-filter="research">Research (1)</button>
+          </div>
+        </div>
+
+        <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7"></div>
+      </div>
+    </section>
+
+    <!-- PROJECT DETAIL MODAL -->
+    <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md transition-opacity">
+      <div class="glass-card max-w-2xl w-full p-6 sm:p-8 rounded-3xl border border-cyanGlow/40 shadow-[0_0_70px_rgba(0,245,212,0.2)] relative max-h-[90vh] overflow-y-auto">
+        <button id="close-modal-btn" class="magnetic absolute top-5 right-5 w-10 h-10 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 flex items-center justify-center text-slate-300 hover:text-white transition" aria-label="Close modal">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+
+        <div id="modal-category-badge" class="inline-block px-3 py-1 rounded-full font-mono text-xs uppercase tracking-wider bg-cyanGlow/15 text-cyanGlow border border-cyanGlow/30 mb-3"></div>
+        <h3 id="modal-title" class="font-display font-bold text-2xl sm:text-3xl text-white mb-4 pr-10"></h3>
+        <p id="modal-description" class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6"></p>
+
+        <div class="mb-6">
+          <div class="font-mono text-xs uppercase tracking-wider text-violetGlow mb-2.5">Key Architecture &amp; Highlights</div>
+          <ul id="modal-highlights" class="space-y-2 text-sm text-slate-300 list-disc list-inside"></ul>
+        </div>
+
+        <div>
+          <div class="font-mono text-xs uppercase tracking-wider text-emerald-400 mb-2.5">Technologies &amp; Hardware</div>
+          <div id="modal-tags" class="flex flex-wrap gap-2"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE & EDUCATION TIMELINE -->
+    <section id="journey" class="py-24 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="reveal-up text-center mb-16">
+          <span class="font-mono text-xs uppercase tracking-[0.25em] text-magentaGlow">04 // CHRONOLOGY</span>
+          <h2 class="font-display font-bold text-3xl sm:text-5xl text-white mt-2">Academic &amp; <span class="gradient-text">Builder Journey</span></h2>
+        </div>
+
+        <div class="relative pl-8 sm:pl-12 space-y-12" id="timeline-container">
+          <div class="absolute left-3 sm:left-5 top-2 bottom-2 w-[2px] bg-white/10 overflow-hidden rounded-full">
+            <div id="timeline-laser" class="w-full h-0 bg-gradient-to-b from-cyanGlow via-violetGlow to-magentaGlow shadow-[0_0_15px_#00f5d4]"></div>
+          </div>
+
+          <div class="reveal-up relative glass-card p-6 sm:p-7">
+            <span class="absolute -left-[2.15rem] sm:-left-[2.65rem] top-7 w-4 h-4 rounded-full bg-cyanGlow shadow-[0_0_16px_#00f5d4] ring-4 ring-obsidian"></span>
+            <span class="font-mono text-xs text-cyanGlow">AIUB • DHAKA, BANGLADESH</span>
+            <h3 class="font-display font-bold text-xl text-white mt-1">B.Sc. in Computer Science &amp; Engineering (ID: 23-55180-3)</h3>
+            <p class="text-slate-400 text-sm sm:text-base mt-2 leading-relaxed">
+              Studying software engineering, computer graphics, data structures, microcontrollers, and embedded systems at American International University-Bangladesh while building hands-on hardware, game, and web prototypes.
+            </p>
+          </div>
+
+          <div class="reveal-up relative glass-card p-6 sm:p-7">
+            <span class="absolute -left-[2.15rem] sm:-left-[2.65rem] top-7 w-4 h-4 rounded-full bg-violetGlow shadow-[0_0_16px_#a855f7] ring-4 ring-obsidian"></span>
+            <span class="font-mono text-xs text-violetGlow">EMBEDDED SYSTEMS &amp; IOT LABS</span>
+            <h3 class="font-display font-bold text-xl text-white mt-1">Automated Toll Gate, Smart Greenhouse &amp; MCU Prototypes</h3>
+            <p class="text-slate-400 text-sm sm:text-base mt-2 leading-relaxed">
+              Engineered real-world ESP32 and Arduino UNO systems integrating RFID, 4x4 keypads, IR sensors, DHT22, soil moisture &amp; LDR sensors, servo gates, relay actuators, I2C LCDs, Blynk cloud, and Google Sheets logging across ATmega, STM32, and PIC microcontrollers.
+            </p>
+          </div>
+
+          <div class="reveal-up relative glass-card p-6 sm:p-7">
+            <span class="absolute -left-[2.15rem] sm:-left-[2.65rem] top-7 w-4 h-4 rounded-full bg-emerald-400 shadow-[0_0_16px_#34d399] ring-4 ring-obsidian"></span>
+            <span class="font-mono text-xs text-emerald-400">GAMES, WEB/MOBILE APPS &amp; RESEARCH</span>
+            <h3 class="font-display font-bold text-xl text-white mt-1">OpenGL Games, Capacitor Android APKs, PHP/AJAX &amp; Vision Research</h3>
+            <p class="text-slate-400 text-sm sm:text-base mt-2 leading-relaxed">
+              Built a Multi-Level 2D Snake Game in C++/OpenGL, packaged Block Blast and a Real-Time Battery Monitor (<span class="font-mono text-xs text-cyanGlow">com.wifiapp.app</span>) into Android APKs, developed PHP/MySQL/AJAX/JSON CRUD systems, and authored a survey on blue light exposure's effects on sleep and vision.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOCIALS, PHONE & INTERACTIVE CONTACT SECTION -->
+    <section id="contact" class="py-24 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="reveal-up text-center max-w-2xl mx-auto mb-14">
+          <span class="font-mono text-xs uppercase tracking-[0.25em] text-cyanGlow">05 // SOCIALS &amp; DIRECT CONTACT</span>
+          <h2 class="font-display font-bold text-3xl sm:text-5xl text-white mt-2">Connect With <span class="gradient-text">Safone Sadib</span></h2>
+          <p class="text-slate-400 text-sm sm:text-base mt-3">
+            Call directly, message on Facebook or Instagram, inspect code on GitHub, or send a project transmission below.
+          </p>
+        </div>
+
+        <!-- 4 Interactive Social & Mobile Cards -->
+        <div class="reveal-up grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
+          <!-- Mobile Number Card -->
+          <div class="tilt-card glass-card neon-sweep p-5 rounded-2xl flex flex-col justify-between">
+            <div class="tilt-glare"></div>
+            <div>
+              <div class="w-11 h-11 rounded-xl bg-emerald-500/15 border border-emerald-400/40 flex items-center justify-center text-emerald-400 mb-4">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+              </div>
+              <div class="font-mono text-xs text-emerald-400 uppercase">Mobile Number</div>
+              <div id="card-phone-display" class="font-display font-bold text-base text-white mt-1 break-all">+880 1XXX-XXXXXX</div>
+            </div>
+            <div class="flex items-center gap-2 mt-5">
+              <a id="card-phone-call" href="tel:+8801000000000" class="magnetic flex-1 py-2 rounded-xl bg-emerald-400 text-obsidian font-mono text-xs font-bold text-center">Call</a>
+              <button type="button" data-copy-target="phone" class="magnetic px-3 py-2 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 font-mono text-xs text-slate-200">Copy</button>
+            </div>
+          </div>
+
+          <!-- Facebook Card -->
+          <div class="tilt-card glass-card neon-sweep p-5 rounded-2xl flex flex-col justify-between">
+            <div class="tilt-glare"></div>
+            <div>
+              <div class="w-11 h-11 rounded-xl bg-blue-500/15 border border-blue-400/40 flex items-center justify-center text-blue-400 mb-4">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+              </div>
+              <div class="font-mono text-xs text-blue-400 uppercase">Facebook ID</div>
+              <div id="card-fb-display" class="font-display font-bold text-base text-white mt-1 truncate">fb.com/safonesadib</div>
+            </div>
+            <div class="flex items-center gap-2 mt-5">
+              <a id="card-fb-visit" href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="magnetic flex-1 py-2 rounded-xl bg-blue-500 text-white font-mono text-xs font-bold text-center">Visit FB</a>
+              <button type="button" data-copy-target="fb" class="magnetic px-3 py-2 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 font-mono text-xs text-slate-200">Copy</button>
+            </div>
+          </div>
+
+          <!-- Instagram Card -->
+          <div class="tilt-card glass-card neon-sweep p-5 rounded-2xl flex flex-col justify-between">
+            <div class="tilt-glare"></div>
+            <div>
+              <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-amber-500/20 via-magentaGlow/20 to-violetGlow/20 border border-magentaGlow/40 flex items-center justify-center text-magentaGlow mb-4">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </div>
+              <div class="font-mono text-xs text-magentaGlow uppercase">Instagram ID</div>
+              <div id="card-ig-display" class="font-display font-bold text-base text-white mt-1 truncate">@safonesadib</div>
+            </div>
+            <div class="flex items-center gap-2 mt-5">
+              <a id="card-ig-visit" href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="magnetic flex-1 py-2 rounded-xl bg-gradient-to-r from-magentaGlow to-violetGlow text-white font-mono text-xs font-bold text-center">Visit IG</a>
+              <button type="button" data-copy-target="ig" class="magnetic px-3 py-2 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 font-mono text-xs text-slate-200">Copy</button>
+            </div>
+          </div>
+
+          <!-- GitHub Card -->
+          <div class="tilt-card glass-card neon-sweep p-5 rounded-2xl flex flex-col justify-between">
+            <div class="tilt-glare"></div>
+            <div>
+              <div class="w-11 h-11 rounded-xl bg-cyanGlow/15 border border-cyanGlow/40 flex items-center justify-center text-cyanGlow mb-4">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              </div>
+              <div class="font-mono text-xs text-cyanGlow uppercase">GitHub Profile</div>
+              <div class="font-display font-bold text-base text-white mt-1 truncate">github.com/SafoneSadib</div>
+            </div>
+            <div class="flex items-center gap-2 mt-5">
+              <a href="https://github.com/SafoneSadib" target="_blank" rel="noopener noreferrer" class="magnetic flex-1 py-2 rounded-xl bg-cyanGlow text-obsidian font-mono text-xs font-bold text-center">Visit GitHub</a>
+              <button type="button" data-copy-target="github" class="magnetic px-3 py-2 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 font-mono text-xs text-slate-200">Copy</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div class="reveal-up lg:col-span-5 glass-card p-7 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <h3 class="font-display font-bold text-2xl text-white">Academic &amp; Location Info</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Want to update your Mobile Number, Facebook ID, Instagram ID, or Profile Photo right on this portfolio? Click the button below to open the live customizer drawer.
+              </p>
+
+              <div class="space-y-3 pt-2 font-mono text-xs">
+                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+                  <span class="text-slate-400">STUDENT ID</span>
+                  <span class="text-cyanGlow font-bold">23-55180-3</span>
+                </div>
+                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+                  <span class="text-slate-400">INSTITUTION</span>
+                  <span class="text-white font-semibold">AIUB, Dhaka</span>
+                </div>
+                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+                  <span class="text-slate-400">EMAIL</span>
+                  <span id="card-email-display" class="text-violetGlow font-semibold">safonesadib@gmail.com</span>
+                </div>
+              </div>
+            </div>
+
+            <button type="button" id="open-customizer-contact" class="magnetic btn-cyber w-full py-3 rounded-xl bg-white/10 hover:bg-cyanGlow hover:text-obsidian border border-cyanGlow/40 font-mono text-xs font-bold uppercase tracking-wider text-cyanGlow transition">
+              Customize Mobile, FB, Insta &amp; Photo
+            </button>
+          </div>
+
+          <form id="contact-form" class="reveal-up lg:col-span-7 glass-card p-7 sm:p-8 space-y-5" novalidate>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="sender-name" class="block font-mono text-xs uppercase tracking-wider text-slate-300 mb-2">Your Name</label>
+                <input id="sender-name" type="text" required placeholder="e.g., Tanvir Ahmed" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/15 text-white placeholder-slate-500 focus:outline-none focus:border-cyanGlow transition" />
+              </div>
+              <div>
+                <label for="sender-email" class="block font-mono text-xs uppercase tracking-wider text-slate-300 mb-2">Your Email</label>
+                <input id="sender-email" type="email" required placeholder="you@example.com" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/15 text-white placeholder-slate-500 focus:outline-none focus:border-cyanGlow transition" />
+              </div>
+            </div>
+
+            <div>
+              <label for="sender-topic" class="block font-mono text-xs uppercase tracking-wider text-slate-300 mb-2">Project Domain</label>
+              <select id="sender-topic" class="w-full px-4 py-3 rounded-xl bg-black/70 border border-white/15 text-white focus:outline-none focus:border-violetGlow transition">
+                <option value="Embedded & IoT Systems (ESP32 / Arduino / MCUs)">Embedded &amp; IoT Systems (ESP32 / Arduino / MCUs)</option>
+                <option value="Game Development (C++ / OpenGL / Luau / Blender)">Game Development (C++ / OpenGL / Luau / Blender)</option>
+                <option value="Web & Mobile App (PHP / MySQL / AJAX / Capacitor APK)">Web &amp; Mobile App (PHP / MySQL / AJAX / Capacitor APK)</option>
+                <option value="Research & Academic Collaboration">Research &amp; Academic Collaboration</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="sender-message" class="block font-mono text-xs uppercase tracking-wider text-slate-300 mb-2">Message</label>
+              <textarea id="sender-message" rows="4" required placeholder="Tell Safone about your idea, timeline, or collaboration..." class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/15 text-white placeholder-slate-500 focus:outline-none focus:border-cyanGlow transition resize-none"></textarea>
+            </div>
+
+            <button type="submit" class="magnetic btn-cyber w-full py-3.5 rounded-2xl bg-gradient-to-r from-cyanGlow via-violetGlow to-magentaGlow text-obsidian font-display font-extrabold text-sm sm:text-base tracking-wide shadow-[0_0_30px_rgba(0,245,212,0.3)] hover:scale-[1.01] transition">
+              Transmit Message
+            </button>
+
+            <div id="form-feedback" class="hidden p-4 rounded-xl bg-emerald-500/15 border border-emerald-400/40 text-emerald-300 font-mono text-xs sm:text-sm"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FLOATING INTERACTIVE CARTOON COMPANION -->
+  <div id="cartoon-companion" class="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-2">
+    <div id="companion-bubble" class="glass-card px-4 py-2.5 rounded-2xl rounded-br-sm border border-cyanGlow/40 text-xs font-mono text-white max-w-[230px] shadow-[0_0_25px_rgba(0,245,212,0.22)] transition-all duration-300">
+      Hey! 👋 Scroll down to explore my IoT, Game &amp; Web builds!
+    </div>
+    <button type="button" id="companion-btn" class="magnetic w-14 h-14 rounded-2xl bg-obsidian/90 border border-cyanGlow/60 shadow-[0_0_25px_rgba(168,85,247,0.4)] flex items-center justify-center hover:scale-110 transition" aria-label="Cartoon Developer Companion">
+      <svg class="w-11 h-11 mascot-body-anim" viewBox="0 0 100 100" fill="none">
+        <path d="M22 50 C22 28, 78 28, 78 50" stroke="#a855f7" stroke-width="6" stroke-linecap="round"/>
+        <rect x="15" y="42" width="9" height="18" rx="4.5" fill="#ff2a85"/>
+        <rect x="76" y="42" width="9" height="18" rx="4.5" fill="#ff2a85"/>
+        <circle cx="50" cy="54" r="22" fill="#ffd6b0"/>
+        <path d="M28 48 C30 28, 70 28, 72 48 C65 38, 56 36, 50 41 C44 36, 35 38, 28 48 Z" fill="#181828"/>
+        <rect x="33" y="47" width="14" height="9" rx="3" fill="#050508" stroke="#00f5d4" stroke-width="1.6"/>
+        <rect x="53" y="47" width="14" height="9" rx="3" fill="#050508" stroke="#00f5d4" stroke-width="1.6"/>
+        <circle class="mascot-eye" cx="40" cy="51.5" r="2" fill="#00f5d4"/>
+        <circle class="mascot-eye" cx="60" cy="51.5" r="2" fill="#00f5d4"/>
+        <path d="M43 64 Q50 70 57 64" stroke="#181828" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- LIVE PROFILE & SOCIAL CUSTOMIZER DRAWER -->
+  <div id="customizer-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div class="glass-card max-w-lg w-full p-6 sm:p-7 rounded-3xl border border-cyanGlow/50 shadow-[0_0_70px_rgba(0,245,212,0.25)] relative max-h-[90vh] overflow-y-auto">
+      <button type="button" id="close-customizer-btn" class="magnetic absolute top-5 right-5 w-9 h-9 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 flex items-center justify-center text-slate-300 hover:text-white">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <span class="font-mono text-xs uppercase tracking-widest text-cyanGlow">LIVE PROFILE CUSTOMIZER</span>
+      <h3 class="font-display font-bold text-2xl text-white mt-1 mb-5">Update Your Photo &amp; Social IDs</h3>
+
+      <form id="customizer-form" class="space-y-4">
+        <div>
+          <label class="block font-mono text-xs text-slate-300 mb-1.5">Profile Picture</label>
+          <input id="drawer-photo-input" type="file" accept="image/*" class="w-full text-xs font-mono text-slate-300 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:bg-cyanGlow file:text-obsidian file:font-bold" />
+        </div>
+
+        <div>
+          <label for="input-phone" class="block font-mono text-xs text-slate-300 mb-1.5">Mobile Number</label>
+          <input id="input-phone" type="text" placeholder="+880 17XX-XXXXXX" class="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/15 text-white font-mono text-sm focus:outline-none focus:border-cyanGlow" />
+        </div>
+
+        <div>
+          <label for="input-fb-handle" class="block font-mono text-xs text-slate-300 mb-1.5">Facebook ID / Handle</label>
+          <input id="input-fb-handle" type="text" placeholder="fb.com/your.id" class="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/15 text-white font-mono text-sm focus:outline-none focus:border-blue-400" />
+        </div>
+
+        <div>
+          <label for="input-fb-url" class="block font-mono text-xs text-slate-300 mb-1.5">Facebook Profile URL</label>
+          <input id="input-fb-url" type="url" placeholder="https://www.facebook.com/your.id" class="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/15 text-white font-mono text-sm focus:outline-none focus:border-blue-400" />
+        </div>
+
+        <div>
+          <label for="input-ig-handle" class="block font-mono text-xs text-slate-300 mb-1.5">Instagram ID / Handle</label>
+          <input id="input-ig-handle" type="text" placeholder="@your_insta_id" class="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/15 text-white font-mono text-sm focus:outline-none focus:border-magentaGlow" />
+        </div>
+
+        <div>
+          <label for="input-ig-url" class="block font-mono text-xs text-slate-300 mb-1.5">Instagram Profile URL</label>
+          <input id="input-ig-url" type="url" placeholder="https://www.instagram.com/your_insta_id" class="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/15 text-white font-mono text-sm focus:outline-none focus:border-magentaGlow" />
+        </div>
+
+        <div>
+          <label for="input-email" class="block font-mono text-xs text-slate-300 mb-1.5">Email Address</label>
+          <input id="input-email" type="email" placeholder="safonesadib@gmail.com" class="w-full px-4 py-2.5 rounded-xl bg-black/60 border border-white/15 text-white font-mono text-sm focus:outline-none focus:border-violetGlow" />
+        </div>
+
+        <div class="flex items-center gap-3 pt-2">
+          <button type="submit" class="magnetic btn-cyber flex-1 py-3 rounded-xl bg-gradient-to-r from-cyanGlow to-violetGlow text-obsidian font-mono text-xs font-bold uppercase tracking-wider">
+            Save &amp; Apply
+          </button>
+          <button type="button" id="reset-profile-btn" class="magnetic px-4 py-3 rounded-xl bg-white/5 hover:bg-rose-500/20 border border-white/10 font-mono text-xs text-rose-300">
+            Reset
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="relative z-10 border-t border-white/10 py-10 px-4 sm:px-6 lg:px-8 bg-black/60 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-400">
+      <div>
+        &copy; <span id="year"></span> <span class="text-white font-bold">Safone Sadib</span> (ID: <span class="text-cyanGlow">23-55180-3</span>) • AIUB, Dhaka
+      </div>
+      <div class="flex items-center gap-5">
+        <a href="#hero" class="hover:text-cyanGlow transition">Top</a>
+        <a href="#skills" class="hover:text-violetGlow transition">Skills</a>
+        <a href="#projects" class="hover:text-emerald-400 transition">Projects</a>
+        <a href="https://github.com/SafoneSadib" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // TOAST HELPER
+      const toastBox = document.getElementById('toast-box');
+      const toastText = document.getElementById('toast-text');
+      let toastTimer = null;
+
+      function showToast(msg) {
+        if (!toastBox || !toastText) return;
+        toastText.textContent = msg;
+        toastBox.classList.remove('hidden');
+        toastBox.classList.add('flex');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toastBox.classList.add('hidden');
+          toastBox.classList.remove('flex');
+        }, 2600);
+      }
+
+      // CLIPBOARD COPY HELPER
+      function copyTextSafe(text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).catch(() => fallbackCopy(text));
+        } else {
+          fallbackCopy(text);
+        }
+        showToast(`Copied: ${text}`);
+      }
+
+      function fallbackCopy(text) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+
+      // PROFILE & SOCIAL STATE (LOCALSTORAGE PERSISTENCE)
+      const STORAGE_KEY = 'safone_portfolio_profile_v1';
+      const defaultProfile = {
+        phone: '+880 1XXX-XXXXXX',
+        fbHandle: 'fb.com/safonesadib',
+        fbUrl: 'https://www.facebook.com',
+        igHandle: '@safonesadib',
+        igUrl: 'https://www.instagram.com',
+        email: 'safonesadib@gmail.com',
+        photoDataUrl: ''
+      };
+
+      let profileState = { ...defaultProfile };
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) profileState = { ...defaultProfile, ...JSON.parse(saved) };
+      } catch (_) {}
+
+      function applyProfileState() {
+        const cleanTel = profileState.phone.replace(/[^+\d]/g, '') || '+8801000000000';
+
+        const heroPhone = document.getElementById('hero-phone-text');
+        const cardPhone = document.getElementById('card-phone-display');
+        const cardCall = document.getElementById('card-phone-call');
+        if (heroPhone) heroPhone.textContent = profileState.phone;
+        if (cardPhone) cardPhone.textContent = profileState.phone;
+        if (cardCall) cardCall.href = `tel:${cleanTel}`;
+
+        const heroFbText = document.getElementById('hero-fb-text');
+        const heroFbLink = document.getElementById('hero-fb-link');
+        const cardFbDisplay = document.getElementById('card-fb-display');
+        const cardFbVisit = document.getElementById('card-fb-visit');
+        if (heroFbText) heroFbText.textContent = profileState.fbHandle;
+        if (heroFbLink) heroFbLink.href = profileState.fbUrl;
+        if (cardFbDisplay) cardFbDisplay.textContent = profileState.fbHandle;
+        if (cardFbVisit) cardFbVisit.href = profileState.fbUrl;
+
+        const heroIgText = document.getElementById('hero-ig-text');
+        const heroIgLink = document.getElementById('hero-ig-link');
+        const cardIgDisplay = document.getElementById('card-ig-display');
+        const cardIgVisit = document.getElementById('card-ig-visit');
+        if (heroIgText) heroIgText.textContent = profileState.igHandle;
+        if (heroIgLink) heroIgLink.href = profileState.igUrl;
+        if (cardIgDisplay) cardIgDisplay.textContent = profileState.igHandle;
+        if (cardIgVisit) cardIgVisit.href = profileState.igUrl;
+
+        const cardEmail = document.getElementById('card-email-display');
+        if (cardEmail) cardEmail.textContent = profileState.email;
+
+        const photoImg = document.getElementById('profile-photo-img');
+        const defaultAvatar = document.getElementById('default-avatar-svg');
+        if (photoImg && defaultAvatar) {
+          if (profileState.photoDataUrl) {
+            photoImg.src = profileState.photoDataUrl;
+            photoImg.classList.remove('hidden');
+            defaultAvatar.classList.add('hidden');
+          } else {
+            photoImg.classList.add('hidden');
+            defaultAvatar.classList.remove('hidden');
+          }
+        }
+      }
+
+      function saveProfileState() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(profileState));
+        } catch (_) {}
+        applyProfileState();
+      }
+
+      function handlePhotoFile(file) {
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          profileState.photoDataUrl = ev.target.result;
+          saveProfileState();
+          showToast('Profile photo updated!');
+        };
+        reader.readAsDataURL(file);
+      }
+
+      ['quick-photo-upload', 'frame-photo-upload', 'drawer-photo-input'].forEach((id) => {
+        const input = document.getElementById(id);
+        if (input) {
+          input.addEventListener('change', (e) => handlePhotoFile(e.target.files[0]));
+        }
+      });
+
+      document.querySelectorAll('[data-copy-target]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const target = btn.dataset.copyTarget;
+          if (target === 'phone') copyTextSafe(profileState.phone);
+          if (target === 'fb') copyTextSafe(profileState.fbHandle);
+          if (target === 'ig') copyTextSafe(profileState.igHandle);
+          if (target === 'github') copyTextSafe('https://github.com/SafoneSadib');
+        });
+      });
+
+      applyProfileState();
+
+      // CUSTOMIZER DRAWER LOGIC
+      const customizerModal = document.getElementById('customizer-modal');
+      const customizerForm = document.getElementById('customizer-form');
+
+      function openCustomizer() {
+        if (!customizerModal) return;
+        document.getElementById('input-phone').value = profileState.phone;
+        document.getElementById('input-fb-handle').value = profileState.fbHandle;
+        document.getElementById('input-fb-url').value = profileState.fbUrl;
+        document.getElementById('input-ig-handle').value = profileState.igHandle;
+        document.getElementById('input-ig-url').value = profileState.igUrl;
+        document.getElementById('input-email').value = profileState.email;
+        customizerModal.classList.remove('hidden');
+        customizerModal.classList.add('flex');
+      }
+
+      function closeCustomizer() {
+        if (!customizerModal) return;
+        customizerModal.classList.add('hidden');
+        customizerModal.classList.remove('flex');
+      }
+
+      document.getElementById('open-customizer-nav')?.addEventListener('click', openCustomizer);
+      document.getElementById('open-customizer-contact')?.addEventListener('click', openCustomizer);
+      document.getElementById('close-customizer-btn')?.addEventListener('click', closeCustomizer);
+      customizerModal?.addEventListener('click', (e) => {
+        if (e.target === customizerModal) closeCustomizer();
+      });
+
+      customizerForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        profileState.phone = document.getElementById('input-phone').value.trim() || defaultProfile.phone;
+        profileState.fbHandle = document.getElementById('input-fb-handle').value.trim() || defaultProfile.fbHandle;
+        profileState.fbUrl = document.getElementById('input-fb-url').value.trim() || defaultProfile.fbUrl;
+        profileState.igHandle = document.getElementById('input-ig-handle').value.trim() || defaultProfile.igHandle;
+        profileState.igUrl = document.getElementById('input-ig-url').value.trim() || defaultProfile.igUrl;
+        profileState.email = document.getElementById('input-email').value.trim() || defaultProfile.email;
+        saveProfileState();
+        closeCustomizer();
+        showToast('Contact & Social IDs saved!');
+      });
+
+      document.getElementById('reset-profile-btn')?.addEventListener('click', () => {
+        profileState = { ...defaultProfile };
+        saveProfileState();
+        closeCustomizer();
+        showToast('Reset to default profile.');
+      });
+
+      // BLACK-SCREEN PRELOADER
+      const preloader = document.getElementById('preloader');
+      const loaderBar = document.getElementById('loader-bar');
+      const loaderPercent = document.getElementById('loader-percent');
+      const loaderStatus = document.getElementById('loader-status');
+
+      const bootMessages = [
+        'CALIBRATING ESP32 TELEMETRY & SENSORS...',
+        'AWAKENING CARTOON DEVELOPER MASCOT...',
+        'COMPILING OPENGL SHADERS & WEB CORE...',
+        'READY — ENTERING SAFONE SADIB PORTFOLIO...'
+      ];
+
+      let progress = 0;
+      const preloaderInterval = setInterval(() => {
+        progress += Math.floor(Math.random() * 12) + 7;
+        if (progress > 100) progress = 100;
+
+        if (loaderBar) loaderBar.style.width = `${progress}%`;
+        if (loaderPercent) loaderPercent.textContent = `${progress}%`;
+        if (loaderStatus) {
+          const idx = Math.min(bootMessages.length - 1, Math.floor((progress / 100) * bootMessages.length));
+          loaderStatus.textContent = bootMessages[idx];
+        }
+
+        if (progress >= 100) {
+          clearInterval(preloaderInterval);
+          setTimeout(() => {
+            if (preloader) {
+              preloader.classList.add('split');
+              setTimeout(() => {
+                preloader.classList.add('hidden-loader');
+                triggerHeroKineticReveal();
+              }, 850);
+            }
+          }, 260);
+        }
+      }, 90);
+
+      // KINETIC TYPOGRAPHY & TYPEWRITER
+      function triggerHeroKineticReveal() {
+        const nameEl = document.getElementById('kinetic-name');
+        if (!nameEl || nameEl.dataset.animated) return;
+        nameEl.dataset.animated = 'true';
+
+        const text = nameEl.textContent.trim();
+        nameEl.innerHTML = '';
+        [...text].forEach((char, idx) => {
+          const span = document.createElement('span');
+          span.textContent = char === ' ' ? '\u00A0' : char;
+          span.className = 'char-reveal gradient-text';
+          span.style.transitionDelay = `${idx * 45}ms`;
+          nameEl.appendChild(span);
+          requestAnimationFrame(() => requestAnimationFrame(() => span.classList.add('visible')));
+        });
+      }
+
+      const roles = [
+        'CSE Student @ AIUB (23-55180-3)',
+        'Game Developer (C++ / OpenGL / Luau / Blender)',
+        'Embedded & IoT Builder (ESP32 / Arduino / MCUs)',
+        'Web & Android APK Developer (PHP / AJAX / Capacitor)'
+      ];
+      const typedRoleEl = document.getElementById('typed-role');
+      let roleIdx = 0, charIdx = 0, isDeleting = false;
+
+      function typeLoop() {
+        if (!typedRoleEl) return;
+        const currentRole = roles[roleIdx];
+        if (!isDeleting) {
+          typedRoleEl.textContent = currentRole.slice(0, ++charIdx);
+          if (charIdx === currentRole.length) {
+            isDeleting = true;
+            setTimeout(typeLoop, 1750);
+            return;
+          }
+          setTimeout(typeLoop, 52);
+        } else {
+          typedRoleEl.textContent = currentRole.slice(0, --charIdx);
+          if (charIdx === 0) {
+            isDeleting = false;
+            roleIdx = (roleIdx + 1) % roles.length;
+            setTimeout(typeLoop, 320);
+            return;
+          }
+          setTimeout(typeLoop, 26);
+        }
+      }
+      setTimeout(typeLoop, 650);
+
+      // MOUSE-TRACKING CARTOON PUPILS
+      const cartoonPupils = document.getElementById('cartoon-pupils');
+      window.addEventListener('mousemove', (e) => {
+        if (!cartoonPupils) return;
+        const dx = ((e.clientX / window.innerWidth) - 0.5) * 4.5;
+        const dy = ((e.clientY / window.innerHeight) - 0.5) * 3.5;
+        cartoonPupils.setAttribute('transform', `translate(${dx.toFixed(2)}, ${dy.toFixed(2)})`);
+      });
+
+      // INTERACTIVE PARTICLE CANVAS WITH CLICK BURST RIPPLES
+      const canvas = document.getElementById('particle-canvas');
+      const ctx = canvas ? canvas.getContext('2d') : null;
+      let particles = [];
+      let ripples = [];
+      const mouse = { x: null, y: null, radius: 145 };
+
+      function resizeCanvas() {
+        if (!canvas) return;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const count = Math.min(95, Math.floor((canvas.width * canvas.height) / 14500));
+        particles = Array.from({ length: count }, () => new Particle());
+      }
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.vx = (Math.random() - 0.5) * 0.65;
+          this.vy = (Math.random() - 0.5) * 0.65;
+          this.size = Math.random() * 2.2 + 0.8;
+          const palette = ['#00f5d4', '#a855f7', '#ff2a85'];
+          this.color = palette[Math.floor(Math.random() * palette.length)];
+        }
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+          if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+          if (mouse.x !== null && mouse.y !== null) {
+            const dx = mouse.x - this.x;
+            const dy = mouse.y - this.y;
+            const dist = Math.hypot(dx, dy);
+            if (dist < mouse.radius && dist > 0) {
+              const force = (mouse.radius - dist) / mouse.radius;
+              this.x -= (dx / dist) * force * 2.2;
+              this.y -= (dy / dist) * force * 2.2;
+            }
+          }
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = this.color;
+          ctx.fill();
+        }
+      }
+
+      function animateParticles() {
+        if (!ctx || !canvas) return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = 0; i < particles.length; i++) {
+          particles[i].update();
+          particles[i].draw();
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.hypot(dx, dy);
+            if (dist < 120) {
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(0, 245, 212, ${(1 - dist / 120) * 0.16})`;
+              ctx.lineWidth = 0.8;
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        ripples = ripples.filter((r) => r.alpha > 0.02);
+        ripples.forEach((r) => {
+          r.radius += 3.5;
+          r.alpha *= 0.94;
+          ctx.beginPath();
+          ctx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(0, 245, 212, ${r.alpha})`;
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+        });
+
+        requestAnimationFrame(animateParticles);
+      }
+
+      window.addEventListener('resize', resizeCanvas);
+      window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+      window.addEventListener('click', (e) => {
+        ripples.push({ x: e.clientX, y: e.clientY, radius: 8, alpha: 0.65 });
+      });
+      resizeCanvas();
+      animateParticles();
+
+      // MAGNETIC CURSOR & 3D TILT
+      const dot = document.getElementById('cursor-dot');
+      const ring = document.getElementById('cursor-ring');
+      let ringX = 0, ringY = 0, dotX = 0, dotY = 0;
+
+      window.addEventListener('mousemove', (e) => {
+        dotX = e.clientX;
+        dotY = e.clientY;
+        if (dot) { dot.style.left = `${dotX}px`; dot.style.top = `${dotY}px`; }
+      });
+
+      function followCursorRing() {
+        ringX += (dotX - ringX) * 0.16;
+        ringY += (dotY - ringY) * 0.16;
+        if (ring) { ring.style.left = `${ringX}px`; ring.style.top = `${ringY}px`; }
+        requestAnimationFrame(followCursorRing);
+      }
+      followCursorRing();
+
+      function bindMagneticElements() {
+        document.querySelectorAll('.magnetic').forEach((el) => {
+          if (el.dataset.magBound) return;
+          el.dataset.magBound = 'true';
+          el.addEventListener('mouseenter', () => ring && ring.classList.add('active'));
+          el.addEventListener('mouseleave', () => {
+            ring && ring.classList.remove('active');
+            el.style.transform = '';
+          });
+          el.addEventListener('mousemove', (e) => {
+            const rect = el.getBoundingClientRect();
+            const relX = e.clientX - (rect.left + rect.width / 2);
+            const relY = e.clientY - (rect.top + rect.height / 2);
+            el.style.transform = `translate(${relX * 0.2}px, ${relY * 0.2}px)`;
+          });
+        });
+      }
+
+      function bindTiltCards() {
+        document.querySelectorAll('.tilt-card').forEach((card) => {
+          if (card.dataset.tiltBound) return;
+          card.dataset.tiltBound = 'true';
+          const glare = card.querySelector('.tilt-glare');
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const rotateX = ((y / rect.height) - 0.5) * -13;
+            const rotateY = ((x / rect.width) - 0.5) * 13;
+            card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            if (glare) {
+              glare.style.opacity = '1';
+              glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(0, 245, 212, 0.18), transparent 65%)`;
+            }
+          });
+          card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+            if (glare) glare.style.opacity = '0';
+          });
+        });
+      }
+
+      bindMagneticElements();
+      bindTiltCards();
+
+      // SKILLS MATRIX
+      const skillsData = [
+        { name: 'C++', cat: 'gamedev', level: 90, badge: 'Systems & Graphics', accent: 'text-cyanGlow' },
+        { name: 'OpenGL / GLUT', cat: 'gamedev', level: 85, badge: '2D Rendering & Loops', accent: 'text-cyanGlow' },
+        { name: 'Luau / Roblox Studio', cat: 'gamedev', level: 86, badge: 'Gameplay Scripting', accent: 'text-violetGlow' },
+        { name: 'Blender', cat: 'gamedev', level: 80, badge: '3D Modeling & Assets', accent: 'text-magentaGlow' },
+        { name: 'ESP32', cat: 'iot', level: 92, badge: 'Wi-Fi IoT & Sensors', accent: 'text-emerald-400' },
+        { name: 'Arduino UNO', cat: 'iot', level: 94, badge: 'Rapid Prototyping', accent: 'text-cyanGlow' },
+        { name: 'ATmega328P & ATmega2560', cat: 'iot', level: 84, badge: 'AVR Microcontrollers', accent: 'text-violetGlow' },
+        { name: 'STM32F401RE', cat: 'iot', level: 78, badge: 'ARM Cortex-M4 MCU', accent: 'text-cyanGlow' },
+        { name: 'PIC33FJ32GP302', cat: 'iot', level: 76, badge: 'dsPIC Microcontroller', accent: 'text-amber-300' },
+        { name: 'HTML & CSS', cat: 'web', level: 92, badge: 'Responsive UI & Motion', accent: 'text-cyanGlow' },
+        { name: 'JavaScript', cat: 'web', level: 88, badge: 'Interactive Web & Apps', accent: 'text-amber-300' },
+        { name: 'PHP & MySQL', cat: 'web', level: 86, badge: 'Backend & Relational DB', accent: 'text-violetGlow' },
+        { name: 'AJAX & JSON', cat: 'web', level: 85, badge: 'Async Data Exchange', accent: 'text-emerald-400' },
+        { name: 'MVC Architecture', cat: 'web', level: 82, badge: 'Clean Code Structure', accent: 'text-cyanGlow' },
+        { name: 'Python', cat: 'web', level: 85, badge: 'Scripting & Automation', accent: 'text-emerald-400' },
+        { name: 'MATLAB', cat: 'web', level: 80, badge: 'Numerical & Signal Analysis', accent: 'text-magentaGlow' }
+      ];
+
+      const skillsGrid = document.getElementById('skills-grid');
+      const skillTabs = document.querySelectorAll('.skill-tab');
+
+      function renderSkills(category = 'all') {
+        if (!skillsGrid) return;
+        const filtered = category === 'all' ? skillsData : skillsData.filter((s) => s.cat === category);
+        skillsGrid.innerHTML = filtered.map((skill) => `
+          <div class="tilt-card glass-card neon-sweep p-5 rounded-2xl transition-all duration-300">
+            <div class="tilt-glare"></div>
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <h3 class="font-display font-bold text-base sm:text-lg text-white">${skill.name}</h3>
+              <span class="font-mono text-xs font-bold ${skill.accent}">${skill.level}%</span>
+            </div>
+            <p class="font-mono text-[11px] text-slate-400 mb-3.5">${skill.badge}</p>
+            <div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+              <div class="h-full rounded-full bg-gradient-to-r from-cyanGlow via-violetGlow to-magentaGlow" style="width: ${skill.level}%;"></div>
+            </div>
+          </div>
+        `).join('');
+        bindTiltCards();
+        bindMagneticElements();
+      }
+
+      skillTabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          skillTabs.forEach((t) => {
+            t.classList.remove('active', 'bg-cyanGlow', 'text-obsidian', 'shadow-[0_0_20px_rgba(0,245,212,0.35)]');
+            t.classList.add('glass-card', 'text-slate-300');
+          });
+          tab.classList.remove('glass-card', 'text-slate-300');
+          tab.classList.add('active', 'bg-cyanGlow', 'text-obsidian', 'shadow-[0_0_20px_rgba(0,245,212,0.35)]');
+          renderSkills(tab.dataset.category);
+        });
+      });
+
+      renderSkills('all');
+
+      // FEATURED PROJECTS DATA & MODAL
+      const projectsData = [
+        {
+          id: 'toll-system',
+          category: 'iot',
+          categoryLabel: 'Embedded & IoT',
+          title: 'Automated RFID & PIN-Based Toll Collection System',
+          summary: 'Smart toll booth controller using ESP32, MFRC522 RFID, 4x4 keypad PIN verification, dual IR vehicle sensors, 16x2 I2C LCD, servo barrier gate, and Google Sheets logging.',
+          highlights: [
+            'Dual IR sensors detect vehicle arrival and exit sequence accurately.',
+            'MFRC522 RFID tag scan paired with 4x4 keypad PIN authentication for security.',
+            '16x2 I2C LCD feedback, automated servo gate barrier actuation, and live Google Sheets transaction logging.'
+          ],
+          tags: ['ESP32', 'MFRC522 RFID', '4x4 Keypad', 'Dual IR Sensors', '16x2 I2C LCD', 'Servo Gate', 'Google Sheets'],
+          svg: `<svg class="w-full h-36" viewBox="0 0 360 140" fill="none">
+            <rect x="20" y="20" width="320" height="100" rx="14" fill="rgba(0,245,212,0.05)" stroke="rgba(0,245,212,0.25)"/>
+            <rect x="45" y="42" width="68" height="56" rx="8" fill="#0d1322" stroke="#00f5d4" stroke-width="1.5"/>
+            <text x="79" y="68" text-anchor="middle" fill="#00f5d4" font-family="JetBrains Mono" font-size="11" font-weight="bold">RFID</text>
+            <text x="79" y="84" text-anchor="middle" fill="#94a3b8" font-family="JetBrains Mono" font-size="9">MFRC522</text>
+            <path d="M113 70 H155" stroke="#a855f7" stroke-width="2" stroke-dasharray="4 3"/>
+            <rect x="155" y="36" width="76" height="68" rx="10" fill="#120f24" stroke="#a855f7" stroke-width="1.8"/>
+            <text x="193" y="67" text-anchor="middle" fill="#fff" font-family="JetBrains Mono" font-size="12" font-weight="bold">ESP32</text>
+            <text x="193" y="84" text-anchor="middle" fill="#34d399" font-family="JetBrains Mono" font-size="9">PIN + GATE</text>
+            <path d="M231 70 H272" stroke="#34d399" stroke-width="2" stroke-dasharray="4 3"/>
+            <rect x="272" y="42" width="60" height="56" rx="8" fill="#0b1d1a" stroke="#34d399" stroke-width="1.5"/>
+            <text x="302" y="68" text-anchor="middle" fill="#34d399" font-family="JetBrains Mono" font-size="10" font-weight="bold">SHEETS</text>
+            <text x="302" y="84" text-anchor="middle" fill="#94a3b8" font-family="JetBrains Mono" font-size="9">LOGGED</text>
+          </svg>`
+        },
+        {
+          id: 'smart-greenhouse',
+          category: 'iot',
+          categoryLabel: 'Embedded & IoT',
+          title: 'Smart Greenhouse Monitoring & Automated Control System',
+          summary: 'Automated agriculture controller combining ESP32 with DHT22 temperature/humidity, soil moisture, and LDR light sensors to drive dual relays, 16x2 LCD, and Blynk cloud.',
+          highlights: [
+            'Continuous environmental sensing via DHT22, soil moisture sensor, and LDR.',
+            'Automated dual-relay control for irrigation/ventilation/lighting based on sensor thresholds.',
+            'Local 16x2 LCD status readout synchronized with remote Blynk cloud dashboard.'
+          ],
+          tags: ['ESP32', 'DHT22', 'Soil Moisture', 'LDR', 'Dual Relays', '16x2 LCD', 'Blynk Cloud'],
+          svg: `<svg class="w-full h-36" viewBox="0 0 360 140" fill="none">
+            <rect x="20" y="20" width="320" height="100" rx="14" fill="rgba(52,211,153,0.05)" stroke="rgba(52,211,153,0.25)"/>
+            <path d="M75 96 V64 C75 48 95 42 105 54 C115 42 135 48 135 64 V96 Z" fill="rgba(52,211,153,0.14)" stroke="#34d399" stroke-width="1.8"/>
+            <circle cx="105" cy="70" r="8" fill="#00f5d4" opacity="0.8"/>
+            <rect x="165" y="40" width="76" height="60" rx="10" fill="#0d1322" stroke="#00f5d4" stroke-width="1.5"/>
+            <text x="203" y="66" text-anchor="middle" fill="#00f5d4" font-family="JetBrains Mono" font-size="11" font-weight="bold">ESP32</text>
+            <text x="203" y="83" text-anchor="middle" fill="#cbd5e1" font-family="JetBrains Mono" font-size="9">2x RELAY</text>
+            <rect x="262" y="42" width="64" height="56" rx="8" fill="#120f24" stroke="#a855f7" stroke-width="1.5"/>
+            <text x="294" y="68" text-anchor="middle" fill="#c4b5fd" font-family="JetBrains Mono" font-size="10" font-weight="bold">BLYNK</text>
+            <text x="294" y="84" text-anchor="middle" fill="#94a3b8" font-family="JetBrains Mono" font-size="9">CLOUD IOT</text>
+          </svg>`
+        },
+        {
+          id: 'snake-opengl',
+          category: 'game',
+          categoryLabel: 'Game Dev',
+          title: 'Multi-Level 2D Snake Game',
+          summary: 'Classic arcade snake reimagined with progressive multi-level stages, obstacles, and real-time 2D rendering built in C++ using OpenGL/GLUT.',
+          highlights: [
+            'Custom game loop, collision detection, and score/level progression in C++.',
+            'Smooth 2D primitives and HUD rendering powered by OpenGL/GLUT.',
+            'Responsive keyboard controls with escalating speed and level layouts.'
+          ],
+          tags: ['C++', 'OpenGL', 'GLUT', '2D Game Loop', 'Collision Logic'],
+          svg: `<svg class="w-full h-36" viewBox="0 0 360 140" fill="none">
+            <rect x="20" y="20" width="320" height="100" rx="14" fill="rgba(168,85,247,0.06)" stroke="rgba(168,85,247,0.28)"/>
+            <path d="M55 85 H115 V52 H185 V88 H245" stroke="#00f5d4" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="245" cy="88" r="6" fill="#ff2a85"/>
+            <rect x="285" y="48" width="16" height="16" rx="3" fill="#34d399"/>
+            <text x="72" y="40" fill="#c4b5fd" font-family="JetBrains Mono" font-size="10">OPENGL / GLUT • MULTI-STAGE</text>
+          </svg>`
+        },
+        {
+          id: 'block-blast',
+          category: 'game',
+          categoryLabel: 'Game Dev',
+          title: 'Block Blast — 10x10 Block Puzzle Game',
+          summary: 'Addictive 10x10 grid block-placement puzzle game crafted with HTML, CSS, and JavaScript and packaged into a native Android APK via Android Studio.',
+          highlights: [
+            '10x10 board matrix with drag/tap piece placement, row/column clearing, and combo scoring.',
+            'Fluid CSS animations and responsive mobile-first layout.',
+            'Packaged as an Android APK using Android Studio for mobile play.'
+          ],
+          tags: ['HTML', 'CSS', 'JavaScript', '10x10 Puzzle', 'Android Studio', 'APK'],
+          svg: `<svg class="w-full h-36" viewBox="0 0 360 140" fill="none">
+            <rect x="20" y="20" width="320" height="100" rx="14" fill="rgba(0,245,212,0.05)" stroke="rgba(0,245,212,0.25)"/>
+            <g transform="translate(115, 34)">
+              <rect x="0" y="0" width="20" height="20" rx="4" fill="#00f5d4"/>
+              <rect x="24" y="0" width="20" height="20" rx="4" fill="#00f5d4"/>
+              <rect x="48" y="0" width="20" height="20" rx="4" fill="#a855f7"/>
+              <rect x="72" y="0" width="20" height="20" rx="4" fill="#34d399"/>
+              <rect x="0" y="24" width="20" height="20" rx="4" fill="#a855f7"/>
+              <rect x="24" y="24" width="20" height="20" rx="4" fill="rgba(255,255,255,0.08)"/>
+              <rect x="48" y="24" width="20" height="20" rx="4" fill="#ff2a85"/>
+              <rect x="72" y="24" width="20" height="20" rx="4" fill="rgba(255,255,255,0.08)"/>
+              <rect x="0" y="48" width="20" height="20" rx="4" fill="#34d399"/>
+              <rect x="24" y="48" width="20" height="20" rx="4" fill="#34d399"/>
+              <rect x="48" y="48" width="20" height="20" rx="4" fill="#34d399"/>
+              <rect x="72" y="48" width="20" height="20" rx="4" fill="#34d399"/>
+            </g>
+          </svg>`
+        },
+        {
+          id: 'battery-monitor',
+          category: 'web',
+          categoryLabel: 'Web & App',
+          title: 'Real-Time Battery Monitor App',
+          summary: 'Live device battery telemetry application built with HTML, CSS, and JavaScript and wrapped with Capacitor & Android Studio under package ID com.wifiapp.app.',
+          highlights: [
+            'Real-time battery percentage, charging status, and health telemetry visualization.',
+            'Built with web technologies (HTML, CSS, JS) and bridged via Capacitor.',
+            'Compiled and packaged for Android as com.wifiapp.app in Android Studio.'
+          ],
+          tags: ['HTML', 'CSS', 'JavaScript', 'Capacitor', 'Android Studio', 'com.wifiapp.app'],
+          svg: `<svg class="w-full h-36" viewBox="0 0 360 140" fill="none">
+            <rect x="20" y="20" width="320" height="100" rx="14" fill="rgba(52,211,153,0.05)" stroke="rgba(52,211,153,0.25)"/>
+            <rect x="95" y="46" width="140" height="48" rx="10" fill="#091614" stroke="#34d399" stroke-width="2"/>
+            <rect x="237" y="60" width="10" height="20" rx="3" fill="#34d399"/>
+            <rect x="102" y="53" width="96" height="34" rx="6" fill="url(#batGrad)"/>
+            <text x="150" y="75" text-anchor="middle" fill="#050508" font-family="JetBrains Mono" font-size="12" font-weight="bold">88% • LIVE</text>
+            <defs>
+              <linearGradient id="batGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop stop-color="#00f5d4"/>
+                <stop offset="1" stop-color="#34d399"/>
+              </linearGradient>
+            </defs>
+          </svg>`
+        },
+        {
+          id: 'php-crud-portal',
+          category: 'web',
+          categoryLabel: 'Web & App',
+          title: 'PHP & MySQL CRUD User Management Portal',
+          summary: 'Full-stack user management portal engineered with PHP, MySQL, AJAX, and JSON for seamless asynchronous create, read, update, and delete operations.',
+          highlights: [
+            'Complete Create, Read, Update, and Delete workflows backed by MySQL.',
+            'Asynchronous AJAX requests paired with structured JSON responses.',
+            'Clean separation of backend endpoints, database queries, and interactive UI.'
+          ],
+          tags: ['PHP', 'MySQL', 'AJAX', 'JSON', 'CRUD', 'HTML/CSS/JS'],
+          svg: `<svg class="w-full h-36" viewBox="0 0 360 140" fill="none">
+            <rect x="20" y="20" width="320" height="100" rx="14" fill="rgba(168,85,247,0.06)" stroke="rgba(168,85,247,0.28)"/>
+            <rect x="55" y="42" width="105" height="56" rx="8" fill="#0d1322" stroke="#a855f7" stroke-width="1.5"/>
+            <text x="107" y="66" text-anchor="middle" fill="#c4b5fd" font-family="JetBrains Mono" font-size="11" font-weight="bold">PHP + AJAX</text>
+            <text x="107" y="83" text-anchor="middle" fill="#00f5d4" font-family="JetBrains Mono" font-size="9">JSON API</text>
+            <path d="M160 70 H200" stroke="#00f5d4" stroke-width="2" stroke-dasharray="4 3"/>
+            <ellipse cx="250" cy="52" rx="45" ry="11" fill="#120f24" stroke="#00f5d4" stroke-width="1.5"/>
+            <path d="M205 52 V86 C205 92 225 97 250 97 C275 97 295 92 295 86 V52" fill="#120f24" stroke="#00f5d4" stroke-width="1.5"/>
+            <text x="250" y="76" text-anchor="middle" fill="#fff" font-family="JetBrains Mono" font-size="10">MySQL DB</text>
+          </svg>`
+        },
+        {
+          id: 'arduino-prototypes',
+          category: 'iot',
+          categoryLabel: 'Embedded & IoT',
+          title: 'Arduino UNO Prototypes: Electronic Voting Machine & IR Object Counter',
+          summary: 'Dual hardware lab prototypes built on Arduino UNO featuring an Electronic Voting Machine with live tally display and an IR Object Counter with I2C LCD readout.',
+          highlights: [
+            'Electronic Voting Machine supporting candidate selection, vote debouncing, and result display.',
+            'IR Object Counter detecting passing items in real time and updating count on an I2C LCD.',
+            'Clean modular Arduino firmware and breadboard/PCB sensor interfacing.'
+          ],
+          tags: ['Arduino UNO', 'I2C LCD', 'IR Sensors', 'Electronic Voting Machine', 'Object Counter'],
+          svg: `<svg class="w-full h-36" viewBox="0 0 360 140" fill="none">
+            <rect x="20" y="20" width="320" height="100" rx="14" fill="rgba(0,245,212,0.05)" stroke="rgba(0,245,212,0.25)"/>
+            <rect x="52" y="42" width="115" height="56" rx="8" fill="#091d24" stroke="#00f5d4" stroke-width="1.5"/>
+            <text x="109" y="66" text-anchor="middle" fill="#00f5d4" font-family="JetBrains Mono" font-size="10" font-weight="bold">E-VOTING</text>
+            <text x="109" y="83" text-anchor="middle" fill="#cbd5e1" font-family="JetBrains Mono" font-size="9">ARDUINO UNO</text>
+            <rect x="193" y="42" width="115" height="56" rx="8" fill="#120f24" stroke="#34d399" stroke-width="1.5"/>
+            <text x="250" y="66" text-anchor="middle" fill="#34d399" font-family="JetBrains Mono" font-size="10" font-weight="bold">IR COUNTER</text>
+            <text x="250" y="83" text-anchor="middle" fill="#cbd5e1" font-family="JetBrains Mono" font-size="9">I2C LCD DISPLAY</text>
+          </svg>`
+        },
+        {
+          id: 'blue-light-survey',
+          category: 'research',
+          categoryLabel: 'Research',
+          title: 'Literature Survey: "A Survey on Blue Light Exposure and Its Effects on Sleep and Vision"',
+          summary: 'Academic literature review examining how short-wavelength blue light from digital screens and LEDs impacts circadian sleep rhythms and ocular/visual health.',
+          highlights: [
+            'Synthesizes findings on blue light wavelengths, melatonin suppression, and sleep quality.',
+            'Reviews visual strain, retinal/ocular considerations, and mitigation strategies.',
+            'Structured academic survey highlighting research gaps and healthy screen habits.'
+          ],
+          tags: ['Literature Survey', 'Blue Light Exposure', 'Sleep Health', 'Vision Research', 'Academic Writing'],
+          svg: `<svg class="w-full h-36" viewBox="0 0 360 140" fill="none">
+            <rect x="20" y="20" width="320" height="100" rx="14" fill="rgba(255,42,133,0.06)" stroke="rgba(255,42,133,0.28)"/>
+            <path d="M55 72 Q95 32 135 72 T215 72 T295 72" stroke="url(#waveGrad)" stroke-width="2.5" fill="none"/>
+            <text x="180" y="106" text-anchor="middle" fill="#f472b6" font-family="JetBrains Mono" font-size="9">BLUE LIGHT SPECTRUM • SLEEP &amp; VISION SURVEY</text>
+            <defs>
+              <linearGradient id="waveGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop stop-color="#00f5d4"/>
+                <stop offset="0.5" stop-color="#a855f7"/>
+                <stop offset="1" stop-color="#ff2a85"/>
+              </linearGradient>
+            </defs>
+          </svg>`
+        }
+      ];
+
+      const projectsGrid = document.getElementById('projects-grid');
+      const projFilters = document.querySelectorAll('.proj-filter');
+      const modal = document.getElementById('project-modal');
+      const closeModalBtn = document.getElementById('close-modal-btn');
+
+      function openProjectModal(projectId) {
+        const proj = projectsData.find((p) => p.id === projectId);
+        if (!proj || !modal) return;
+        document.getElementById('modal-category-badge').textContent = proj.categoryLabel;
+        document.getElementById('modal-title').textContent = proj.title;
+        document.getElementById('modal-description').textContent = proj.summary;
+        document.getElementById('modal-highlights').innerHTML = proj.highlights.map((h) => `<li>${h}</li>`).join('');
+        document.getElementById('modal-tags').innerHTML = proj.tags
+          .map((t) => `<span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 font-mono text-xs text-cyanGlow">${t}</span>`)
+          .join('');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+
+      function closeProjectModal() {
+        if (!modal) return;
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+
+      closeModalBtn?.addEventListener('click', closeProjectModal);
+      modal?.addEventListener('click', (e) => { if (e.target === modal) closeProjectModal(); });
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeProjectModal();
+          closeCustomizer();
+        }
+      });
+
+      function renderProjects(filter = 'all') {
+        if (!projectsGrid) return;
+        const filtered = filter === 'all' ? projectsData : projectsData.filter((p) => p.category === filter);
+        projectsGrid.innerHTML = filtered.map((proj) => `
+          <article class="tilt-card glass-card neon-sweep p-6 rounded-2xl flex flex-col justify-between transition-all duration-300">
+            <div class="tilt-glare"></div>
+            <div>
+              <div class="mb-4 rounded-xl overflow-hidden border border-white/10 bg-black/40">
+                ${proj.svg}
+              </div>
+              <span class="inline-block font-mono text-[11px] uppercase tracking-wider text-cyanGlow mb-1.5">${proj.categoryLabel}</span>
+              <h3 class="font-display font-bold text-lg sm:text-xl text-white leading-snug mb-2.5">${proj.title}</h3>
+              <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">${proj.summary}</p>
+            </div>
+            <div>
+              <div class="flex flex-wrap gap-1.5 mb-4">
+                ${proj.tags.slice(0, 4).map((tag) => `
+                  <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 font-mono text-[10px] text-slate-300">${tag}</span>
+                `).join('')}
+              </div>
+              <button type="button" data-open-project="${proj.id}" class="open-proj-btn magnetic w-full py-2.5 rounded-xl bg-white/5 hover:bg-cyanGlow hover:text-obsidian border border-white/10 font-mono text-xs font-bold uppercase tracking-wider text-cyanGlow transition-colors">
+                Inspect Details
+              </button>
+            </div>
+          </article>
+        `).join('');
+
+        document.querySelectorAll('.open-proj-btn').forEach((btn) => {
+          btn.addEventListener('click', () => openProjectModal(btn.dataset.openProject));
+        });
+
+        bindTiltCards();
+        bindMagneticElements();
+      }
+
+      projFilters.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          projFilters.forEach((b) => {
+            b.classList.remove('active', 'bg-violetGlow', 'text-white');
+            b.classList.add('glass-card', 'text-slate-300');
+          });
+          btn.classList.remove('glass-card', 'text-slate-300');
+          btn.classList.add('active', 'bg-violetGlow', 'text-white');
+          renderProjects(btn.dataset.filter);
+        });
+      });
+
+      renderProjects('all');
+
+      // SCROLL PROGRESS, TIMELINE LASER, COUNTERS & CARTOON COMPANION SPEECH
+      const scrollProgress = document.getElementById('scroll-progress');
+      const timelineContainer = document.getElementById('timeline-container');
+      const timelineLaser = document.getElementById('timeline-laser');
+      const companionBubble = document.getElementById('companion-bubble');
+      const companionBtn = document.getElementById('companion-btn');
+      let countersStarted = false;
+
+      const companionQuotes = [
+        'Hey! 👋 Scroll down to explore my IoT, Game & Web builds!',
+        'Check out my ESP32 RFID Toll Gate & Smart Greenhouse! ⚡',
+        'I built 2D Snake in OpenGL & Block Blast APK! 🎮',
+        'Connect with me via Mobile, Facebook, or Instagram! 📱'
+      ];
+      let quoteIndex = 0;
+
+      companionBtn?.addEventListener('click', () => {
+        quoteIndex = (quoteIndex + 1) % companionQuotes.length;
+        if (companionBubble) companionBubble.textContent = companionQuotes[quoteIndex];
+      });
+
+      function animateCounters() {
+        if (countersStarted) return;
+        countersStarted = true;
+        document.querySelectorAll('.counter').forEach((counter) => {
+          const target = Number(counter.dataset.target || 0);
+          const duration = 1400;
+          const startTime = performance.now();
+          function step(now) {
+            const elapsed = now - startTime;
+            const ratio = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - ratio, 3);
+            counter.textContent = Math.round(eased * target);
+            if (ratio < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        });
+      }
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+              if (entry.target.querySelector('.counter')) animateCounters();
+            }
+          });
+        },
+        { threshold: 0.14 }
+      );
+
+      document.querySelectorAll('.reveal-up').forEach((el) => revealObserver.observe(el));
+
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docHeight > 0 ? scrollTop / docHeight : 0;
+
+        if (scrollProgress) scrollProgress.style.width = `${pct * 100}%`;
+
+        if (companionBubble) {
+          if (pct < 0.25) companionBubble.textContent = companionQuotes[0];
+          else if (pct < 0.55) companionBubble.textContent = companionQuotes[1];
+          else if (pct < 0.8) companionBubble.textContent = companionQuotes[2];
+          else companionBubble.textContent = companionQuotes[3];
+        }
+
+        if (timelineContainer && timelineLaser) {
+          const rect = timelineContainer.getBoundingClientRect();
+          const viewHeight = window.innerHeight;
+          const progressRatio = Math.min(Math.max((viewHeight * 0.7 - rect.top) / rect.height, 0), 1);
+          timelineLaser.style.height = `${progressRatio * 100}%`;
+        }
+      });
+
+      // MOBILE MENU & CONTACT FORM
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileBtn?.addEventListener('click', () => mobileMenu?.classList.toggle('hidden'));
+      document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+        link.addEventListener('click', () => mobileMenu?.classList.add('hidden'));
+      });
+
+      const contactForm = document.getElementById('contact-form');
+      const formFeedback = document.getElementById('form-feedback');
+
+      contactForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nameVal = document.getElementById('sender-name').value.trim();
+        const emailVal = document.getElementById('sender-email').value.trim();
+        const topicVal = document.getElementById('sender-topic').value;
+        const msgVal = document.getElementById('sender-message').value.trim();
+
+        if (!nameVal || !emailVal || !msgVal) {
+          formFeedback.className = 'p-4 rounded-xl bg-rose-500/15 border border-rose-400/40 text-rose-300 font-mono text-xs sm:text-sm';
+          formFeedback.textContent = 'Please fill in your name, email, and message before sending.';
+          formFeedback.classList.remove('hidden');
+          return;
+        }
+
+        formFeedback.className = 'p-4 rounded-xl bg-emerald-500/15 border border-emerald-400/40 text-emerald-300 font-mono text-xs sm:text-sm';
+        formFeedback.textContent = `Message prepared for Safone Sadib (23-55180-3) regarding [${topicVal}]. Thank you, ${nameVal}!`;
+        formFeedback.classList.remove('hidden');
+        contactForm.reset();
+        showToast('Transmission sent!');
+      });
+    })();
+  </script>
+</body>
+</html>
